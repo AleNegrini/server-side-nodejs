@@ -39,10 +39,13 @@ leaderRouter.route('/:leaderId')
     res.end("Will get the leader with id " +req.params.leaderId+ " to you!");
 })
 .post((req, res, next) => {
-    res.end("PUT not supported on /leaders/:leaderId");
+    res.statusCode = 403;
+    res.end("POST not supported on /leaders/"+req.params.leaderId);
 })
 .put((req, res, next) => {
-    res.end("Updating the leader with id " +req.params.leaderId);
+    res.write('Updating the leader: ' + req.params.leaderId + '\n');
+    res.end('Will update the leader: ' + req.body.name + 
+        ' with details: ' + req.body.description);
 })
 .delete((req, res, next) => {
     res.end("Will delete leader with id "+req.params.leaderId);

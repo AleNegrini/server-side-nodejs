@@ -39,10 +39,13 @@ promotionRouter.route('/:promoId')
     res.end("Will get the promo with id " +req.params.promoId+ " to you!");
 })
 .post((req, res, next) => {
-    res.end("PUT not supported on /promotions/:promoId");
+    res.statusCode = 403;
+    res.end("POST not supported on /promotions/"+req.params.promoId);
 })
 .put((req, res, next) => {
-    res.end("Updating the promo with id " +req.params.promoId);
+    res.write('Updating the promotion: ' + req.params.promoId + '\n');
+    res.end('Will update the promotion: ' + req.body.name + 
+        ' with details: ' + req.body.description);
 })
 .delete((req, res, next) => {
     res.end("Will delete promo with id "+req.params.promoId);

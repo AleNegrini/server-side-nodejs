@@ -39,10 +39,13 @@ dishRouter.route('/:dishId')
     res.end("Will get the dish with id " +req.params.dishId+ " to you!");
 })
 .post((req, res, next) => {
-    res.end("PUT not supported on /dishes/:dishId");
+    res.statusCode = 403;
+    res.end("POST not supported on /dishes/"+req.params.dishId);
 })
 .put((req, res, next) => {
-    res.end("Updating the dish with id " +req.params.dishId);
+    res.write('Updating the dish: ' + req.params.dishId + '\n');
+    res.end('Will update the dish: ' + req.body.name + 
+        ' with details: ' + req.body.description);
 })
 .delete((req, res, next) => {
     res.end("Will delete dish with id "+req.params.dishId);
