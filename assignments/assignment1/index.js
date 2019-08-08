@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 // importing my routes
 const dishRouter = require('./routes/dishRouter');
+const promotionRouter = require('./routes/promotionRouter');
 
 // constants -- TRY TO CREATE AN AD HOC MODULE FOR CONSTANTS
 const hostname = 'localhost';
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 // mounting dishRouter
 app.use('/dishes', dishRouter);
+app.use('/promotions',promotionRouter);
 app.use(express.static(__dirname+'/public'))
 
 const server = http.createServer(app);
