@@ -9,36 +9,30 @@ const leaderSchema = new Schema({
         required: true,
         unique: true
     },
-    description: {
+    image: {
         type: String, 
         required: true
     },
-    image: {
+    designation: {
         type: String,
         required: true
     },
-    category: {
+    abbr: {
         type: String,
         required: true
     },
-    label: {
+    description: {
         type: String,
-        default: ''
+        required: true
     },
-    price: {
-        type: Currency,
-        required: true,
-        min: 0
-    },
-    feature: {
+    featured: {
         type: Boolean,
         default: false
-    },
-    comments: [commentSchema]
+    }
 },{
     timestamps: true
 });
 
-var Dishes = mongoose.model('Dish',dishSchema);
+var Leaders = mongoose.model('Leader',leaderSchema);
 
-module.exports = Dishes;
+module.exports = Leaders;
