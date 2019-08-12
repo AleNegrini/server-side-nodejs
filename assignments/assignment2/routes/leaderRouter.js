@@ -21,7 +21,6 @@ leaderRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-//modificare da qui --ALE
 .post((req, res, next) => {
     Leaders.create(req.body)
     .then((leader) => {
